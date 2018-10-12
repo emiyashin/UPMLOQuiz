@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1038604813620",
+    "firebase_url": "https://upm-lo-quiz.firebaseio.com",
+    "project_id": "upm-lo-quiz",
+    "storage_bucket": "upm-lo-quiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038604813620:android:7907caf35293fd65",
+        "android_client_info": {
+          "package_name": "com.upm.lo.quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1038604813620-cli17nthqt72713nob8dabold5t43tmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBznFH19cZw3Io7whm0FB5avNDO1t1SLjs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
