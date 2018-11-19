@@ -108,6 +108,153 @@ public class QuizActivity extends AppCompatActivity {
                             }
                         }
                     });
+
+                    b2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(b2.getText().toString().equals(question.getAnswer())) {
+                                Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
+                                b2.setBackgroundColor(Color.GREEN);
+                                correct = correct+1;
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        correct++;
+                                        b1.setBackgroundColor(Color.GRAY);
+                                        updateQuestion();
+                                    }
+                                },1500);
+                            }
+                            else {
+                                // answer is wrong, find the correct answer and make it green
+                                Toast.makeText(getApplicationContext(),"Wrong Answer!", Toast.LENGTH_SHORT).show();
+                                wrong++;
+                                b2.setBackgroundColor(Color.RED);
+
+                                if(b1.getText().toString().equals(question.getAnswer())) {
+                                    b1.setBackgroundColor(Color.GREEN);
+                                }
+                                else if (b3.getText().toString().equals(question.getAnswer())) {
+                                    b3.setBackgroundColor(Color.GREEN);
+                                }
+                                else if (b4.getText().toString().equals(question.getAnswer())) {
+                                    b4.setBackgroundColor(Color.GREEN);
+                                }
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        b1.setBackgroundColor(Color.GRAY);
+                                        b2.setBackgroundColor(Color.GRAY);
+                                        b3.setBackgroundColor(Color.GRAY);
+                                        b4.setBackgroundColor(Color.GRAY);
+                                    }
+                                },1500);
+
+                            }
+                        }
+                    });
+
+                    b3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(b3.getText().toString().equals(question.getAnswer())) {
+                                Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
+                                b1.setBackgroundColor(Color.GREEN);
+                                correct = correct+1;
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        correct++;
+                                        b3.setBackgroundColor(Color.GRAY);
+                                        updateQuestion();
+                                    }
+                                },1500);
+                            }
+                            else {
+                                // answer is wrong, find the correct answer and make it green
+                                Toast.makeText(getApplicationContext(),"Wrong Answer!", Toast.LENGTH_SHORT).show();
+                                wrong++;
+                                b3.setBackgroundColor(Color.RED);
+
+                                if(b1.getText().toString().equals(question.getAnswer())) {
+                                    b1.setBackgroundColor(Color.GREEN);
+                                }
+                                else if (b2.getText().toString().equals(question.getAnswer())) {
+                                    b2.setBackgroundColor(Color.GREEN);
+                                }
+                                else if (b4.getText().toString().equals(question.getAnswer())) {
+                                    b4.setBackgroundColor(Color.GREEN);
+                                }
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        b1.setBackgroundColor(Color.GRAY);
+                                        b2.setBackgroundColor(Color.GRAY);
+                                        b3.setBackgroundColor(Color.GRAY);
+                                        b4.setBackgroundColor(Color.GRAY);
+                                    }
+                                },1500);
+
+                            }
+                        }
+                    });
+
+                    b4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(b4.getText().toString().equals(question.getAnswer())) {
+                                Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
+                                b4.setBackgroundColor(Color.GREEN);
+                                correct = correct+1;
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        correct++;
+                                        b1.setBackgroundColor(Color.GRAY);
+                                        updateQuestion();
+                                    }
+                                },1500);
+                            }
+                            else {
+                                // answer is wrong, find the correct answer and make it green
+                                Toast.makeText(getApplicationContext(),"Wrong Answer!", Toast.LENGTH_SHORT).show();
+                                wrong++;
+                                b1.setBackgroundColor(Color.RED);
+
+                                if(b1.getText().toString().equals(question.getAnswer())) {
+                                    b1.setBackgroundColor(Color.GREEN);
+                                }
+                                else if (b2.getText().toString().equals(question.getAnswer())) {
+                                    b2.setBackgroundColor(Color.GREEN);
+                                }
+                                else if (b3.getText().toString().equals(question.getAnswer())) {
+                                    b3.setBackgroundColor(Color.GREEN);
+                                }
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        b1.setBackgroundColor(Color.GRAY);
+                                        b2.setBackgroundColor(Color.GRAY);
+                                        b3.setBackgroundColor(Color.GRAY);
+                                        b4.setBackgroundColor(Color.GRAY);
+                                    }
+                                },1500);
+
+                            }
+                        }
+                    });
                 }
 
                 @Override
