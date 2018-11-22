@@ -1,6 +1,8 @@
 package com.upm.lo.quiz;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +23,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button b1, b2, b3, b4;
     private TextView t1_question, timerTxt;
-    private int total, correct = 0, wrong = 0;
+    private int total = 0, correct = 0, wrong = 0;
 
     DatabaseReference reference;
 
@@ -39,12 +41,22 @@ public class QuizActivity extends AppCompatActivity {
         timerTxt = (TextView) findViewById(R.id.timerTxt);
 
         updateQuestion();
+        reverseTimer(30,timerTxt);
     }
 
     private void updateQuestion() {
         total++;
         if (total>4) {
             //open the result activity
+
+            total--;
+
+            Intent i = new Intent(QuizActivity.this,ResultActivity.class);
+            i.putExtra("total",String.valueOf(total));
+            i.putExtra("correct",String.valueOf(correct));
+            i.putExtra("incorrect",String.valueOf(wrong));
+
+            startActivity(i);
         }
 
         else
@@ -68,7 +80,6 @@ public class QuizActivity extends AppCompatActivity {
                             {
                                 Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
                                 b1.setBackgroundColor(Color.GREEN);
-                                correct = correct+1;
 
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
@@ -118,7 +129,6 @@ public class QuizActivity extends AppCompatActivity {
                             if(b2.getText().toString().equals(question.getAnswer())) {
                                 Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
                                 b2.setBackgroundColor(Color.GREEN);
-                                correct = correct+1;
 
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
@@ -168,7 +178,6 @@ public class QuizActivity extends AppCompatActivity {
                             if(b3.getText().toString().equals(question.getAnswer())) {
                                 Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
                                 b3.setBackgroundColor(Color.GREEN);
-                                correct = correct+1;
 
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
@@ -218,7 +227,6 @@ public class QuizActivity extends AppCompatActivity {
                             if(b4.getText().toString().equals(question.getAnswer())) {
                                 Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
                                 b4.setBackgroundColor(Color.GREEN);
-                                correct = correct+1;
 
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
@@ -272,4 +280,25 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    public void reverseTimer(int seconds, final TextView tv) {
+
+        new CountDownTimer(seconds * 1000 + 1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                tv.setText(String.format(String.format("%02d", minutes) + ":" + String.format("%02d", seconds)));
+            }
+
+            public void onFinish() {
+                tv.setText("Completed");
+                Intent myIntent = new Intent(QuizActivity.this, ResultActivity.class);
+                myIntent.putExtra("total", String.valueOf(total));
+                myIntent.putExtra("correct", String.valueOf(correct));
+                myIntent.putExtra("incorrect", String.valueOf(wrong));
+                startActivity(myIntent);
+            }
+        }.start();
+    }
 }
