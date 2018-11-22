@@ -21,7 +21,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button b1, b2, b3, b4;
     private TextView t1_question, timerTxt;
-    private int total = 1, correct = 0, wrong = 0;
+    private int total, correct = 0, wrong = 0;
 
     DatabaseReference reference;
 
@@ -42,6 +42,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
+        total++;
         if (total>4) {
             //open the result activity
         }
@@ -63,7 +64,8 @@ public class QuizActivity extends AppCompatActivity {
                     b1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(b1.getText().toString().equals(question.getAnswer())) {
+                            if(b1.getText().toString().equals(question.getAnswer()))
+                            {
                                 Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
                                 b1.setBackgroundColor(Color.GREEN);
                                 correct = correct+1;
@@ -73,7 +75,7 @@ public class QuizActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         correct++;
-                                        b1.setBackgroundColor(Color.GRAY);
+                                        b1.setBackgroundColor(Color.LTGRAY);
                                         updateQuestion();
                                     }
                                 },1500);
@@ -98,10 +100,11 @@ public class QuizActivity extends AppCompatActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        b1.setBackgroundColor(Color.GRAY);
-                                        b2.setBackgroundColor(Color.GRAY);
-                                        b3.setBackgroundColor(Color.GRAY);
-                                        b4.setBackgroundColor(Color.GRAY);
+                                        b1.setBackgroundColor(Color.LTGRAY);
+                                        b2.setBackgroundColor(Color.LTGRAY);
+                                        b3.setBackgroundColor(Color.LTGRAY);
+                                        b4.setBackgroundColor(Color.LTGRAY);
+                                        updateQuestion();
                                     }
                                 },1500);
 
@@ -122,7 +125,7 @@ public class QuizActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         correct++;
-                                        b1.setBackgroundColor(Color.GRAY);
+                                        b2.setBackgroundColor(Color.LTGRAY);
                                         updateQuestion();
                                     }
                                 },1500);
@@ -147,10 +150,11 @@ public class QuizActivity extends AppCompatActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        b1.setBackgroundColor(Color.GRAY);
-                                        b2.setBackgroundColor(Color.GRAY);
-                                        b3.setBackgroundColor(Color.GRAY);
-                                        b4.setBackgroundColor(Color.GRAY);
+                                        b1.setBackgroundColor(Color.LTGRAY);
+                                        b2.setBackgroundColor(Color.LTGRAY);
+                                        b3.setBackgroundColor(Color.LTGRAY);
+                                        b4.setBackgroundColor(Color.LTGRAY);
+                                        updateQuestion();
                                     }
                                 },1500);
 
@@ -163,7 +167,7 @@ public class QuizActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             if(b3.getText().toString().equals(question.getAnswer())) {
                                 Toast.makeText(getApplicationContext(), "Correct Answer!", Toast.LENGTH_SHORT).show();
-                                b1.setBackgroundColor(Color.GREEN);
+                                b3.setBackgroundColor(Color.GREEN);
                                 correct = correct+1;
 
                                 Handler handler = new Handler();
@@ -171,7 +175,7 @@ public class QuizActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         correct++;
-                                        b3.setBackgroundColor(Color.GRAY);
+                                        b3.setBackgroundColor(Color.LTGRAY);
                                         updateQuestion();
                                     }
                                 },1500);
@@ -196,10 +200,11 @@ public class QuizActivity extends AppCompatActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        b1.setBackgroundColor(Color.GRAY);
-                                        b2.setBackgroundColor(Color.GRAY);
-                                        b3.setBackgroundColor(Color.GRAY);
-                                        b4.setBackgroundColor(Color.GRAY);
+                                        b1.setBackgroundColor(Color.LTGRAY);
+                                        b2.setBackgroundColor(Color.LTGRAY);
+                                        b3.setBackgroundColor(Color.LTGRAY);
+                                        b4.setBackgroundColor(Color.LTGRAY);
+                                        updateQuestion();
                                     }
                                 },1500);
 
@@ -220,7 +225,7 @@ public class QuizActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         correct++;
-                                        b1.setBackgroundColor(Color.GRAY);
+                                        b4.setBackgroundColor(Color.LTGRAY);
                                         updateQuestion();
                                     }
                                 },1500);
@@ -229,7 +234,7 @@ public class QuizActivity extends AppCompatActivity {
                                 // answer is wrong, find the correct answer and make it green
                                 Toast.makeText(getApplicationContext(),"Wrong Answer!", Toast.LENGTH_SHORT).show();
                                 wrong++;
-                                b1.setBackgroundColor(Color.RED);
+                                b4.setBackgroundColor(Color.RED);
 
                                 if(b1.getText().toString().equals(question.getAnswer())) {
                                     b1.setBackgroundColor(Color.GREEN);
@@ -245,10 +250,11 @@ public class QuizActivity extends AppCompatActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        b1.setBackgroundColor(Color.GRAY);
-                                        b2.setBackgroundColor(Color.GRAY);
-                                        b3.setBackgroundColor(Color.GRAY);
-                                        b4.setBackgroundColor(Color.GRAY);
+                                        b1.setBackgroundColor(Color.LTGRAY);
+                                        b2.setBackgroundColor(Color.LTGRAY);
+                                        b3.setBackgroundColor(Color.LTGRAY);
+                                        b4.setBackgroundColor(Color.LTGRAY);
+                                        updateQuestion();
                                     }
                                 },1500);
 
