@@ -7,37 +7,155 @@
     tools:context=".CreateQuiz">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:id="@+id/tQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:text="Question"
+        app:layout_constraintBottom_toTopOf="@+id/tOption1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/cvQuestion"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/cvQuestion"/>
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tOption1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tOption1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Option 1"
+        app:layout_constraintBottom_toTopOf="@+id/cvOption1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tQuestion" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/cvOption1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/cvOption1"/>
+        app:layout_constraintBottom_toTopOf="@+id/tOption2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tOption1" />
+
+    <TextView
+        android:id="@+id/tOption2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Option 2"
+        app:layout_constraintBottom_toTopOf="@+id/cvOption2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvOption1" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/cvOption2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/cvOption2"/>
+        app:layout_constraintBottom_toTopOf="@+id/tOption3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tOption2" />
+
+    <TextView
+        android:id="@+id/tOption3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:text="Option 3"
+        app:layout_constraintBottom_toTopOf="@+id/cvOption3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvOption2" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/cvOption3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/cvOption3"/>
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/tOption4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tOption3" />
+
+    <TextView
+        android:id="@+id/tOption4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:text="Option 4"
+        app:layout_constraintBottom_toTopOf="@+id/cvOption4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvOption3" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/cvOption4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tAnswer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tOption4" />
+
+    <TextView
+        android:id="@+id/tAnswer"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/cvOption4"/>
+        android:layout_marginBottom="7dp"
+        android:text="Answer"
+        app:layout_constraintBottom_toTopOf="@+id/cvAnswer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvOption4" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/cvAnswer"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/cvTypeLO"/>
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/tTypeLO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tAnswer" />
+
+    <TextView
+        android:id="@+id/tTypeLO"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="LO Type"
+        app:layout_constraintBottom_toTopOf="@+id/cvTypeLO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvAnswer" />
+
+    <EditText
+        android:id="@+id/cvTypeLO"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/cButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tTypeLO" />
+
+    <Button
+        android:id="@+id/cButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvTypeLO" />
 
 </android.support.constraint.ConstraintLayout>
