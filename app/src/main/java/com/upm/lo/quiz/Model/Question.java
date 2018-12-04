@@ -3,14 +3,23 @@ package com.upm.lo.quiz.Model;
 public class Question {
 
     public String question, option1, option2, option3, option4, answer;
+    public int intLO;
+    public static String [] LO;
 
-    public Question(String question, String option1, String option2, String option3, String option4, String answer) {
+    static {
+        LO = new String[6];
+        LO[0] = "Comprehension";
+        LO[1] = "Critical Thinking";
+    }
+
+    public Question(String question, String option1, String option2, String option3, String option4, String answer, int intLO) {
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.option4 = option4;
         this.answer = answer;
+        this.intLO = intLO;
     }
 
     public Question() {
@@ -63,5 +72,13 @@ public class Question {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public int getIntLO() {
+        return intLO;
+    }
+
+    public void setIntLO(int intLO) {
+        this.intLO = intLO;
     }
 }

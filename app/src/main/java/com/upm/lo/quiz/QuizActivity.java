@@ -24,6 +24,9 @@ public class QuizActivity extends AppCompatActivity {
     private Button b1, b2, b3, b4;
     private TextView t1_question, timerTxt;
     private int total = 0, correct = 0, wrong = 0;
+    private int resultLO_total [] = new int[Question.LO.length];
+    private int resultLO_correct [] = new int[Question.LO.length];
+    private CountDownTimer time;
 
     DatabaseReference reference;
 
@@ -41,22 +44,25 @@ public class QuizActivity extends AppCompatActivity {
         timerTxt = (TextView) findViewById(R.id.timerTxt);
 
         updateQuestion();
-        reverseTimer(30,timerTxt);
+        reverseTimer(15,timerTxt);
     }
 
     private void updateQuestion() {
         total++;
         if (total>4) {
             //open the result activity
-
             total--;
+            time.cancel();
+            time.onFinish();
 
-            Intent i = new Intent(QuizActivity.this,ResultActivity.class);
-            i.putExtra("total",String.valueOf(total));
-            i.putExtra("correct",String.valueOf(correct));
-            i.putExtra("incorrect",String.valueOf(wrong));
+            //Intent i = new Intent(QuizActivity.this,ResultActivity.class);
+            //i.putExtra("total",String.valueOf(total));
+            //i.putExtra("correct",String.valueOf(correct));
+            //i.putExtra("incorrect",String.valueOf(wrong));
+            //i.putExtra("total lo", resultLO_total);
+            //i.putExtra("correct lo", resultLO_correct);
 
-            startActivity(i);
+            //startActivity(i);
         }
 
         else
@@ -72,6 +78,7 @@ public class QuizActivity extends AppCompatActivity {
                     b2.setText(question.getOption2());
                     b3.setText(question.getOption3());
                     b4.setText(question.getOption4());
+                    resultLO_total[question.getIntLO()]++;
 
                     b1.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -86,6 +93,7 @@ public class QuizActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         correct++;
+                                        resultLO_correct[question.getIntLO()]++;
                                         b1.setBackgroundColor(Color.LTGRAY);
                                         updateQuestion();
                                     }
@@ -135,6 +143,7 @@ public class QuizActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         correct++;
+                                        resultLO_correct[question.getIntLO()]++;
                                         b2.setBackgroundColor(Color.LTGRAY);
                                         updateQuestion();
                                     }
@@ -184,6 +193,7 @@ public class QuizActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         correct++;
+                                        resultLO_correct[question.getIntLO()]++;
                                         b3.setBackgroundColor(Color.LTGRAY);
                                         updateQuestion();
                                     }
@@ -233,6 +243,7 @@ public class QuizActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         correct++;
+                                        resultLO_correct[question.getIntLO()]++;
                                         b4.setBackgroundColor(Color.LTGRAY);
                                         updateQuestion();
                                     }
@@ -282,7 +293,7 @@ public class QuizActivity extends AppCompatActivity {
 
     public void reverseTimer(int seconds, final TextView tv) {
 
-        new CountDownTimer(seconds * 1000 + 1000, 1000) {
+        time = new CountDownTimer(seconds * 1000 + 1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 int seconds = (int) (millisUntilFinished / 1000);
@@ -297,6 +308,8 @@ public class QuizActivity extends AppCompatActivity {
                 myIntent.putExtra("total", String.valueOf(total));
                 myIntent.putExtra("correct", String.valueOf(correct));
                 myIntent.putExtra("incorrect", String.valueOf(wrong));
+                myIntent.putExtra("total lo", resultLO_total);
+                myIntent.putExtra("correct lo", resultLO_correct);
                 startActivity(myIntent);
             }
         }.start();
