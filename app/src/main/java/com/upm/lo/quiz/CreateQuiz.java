@@ -24,7 +24,7 @@ public class CreateQuiz extends AppCompatActivity {
     private EditText cQuestion, cOption1, cOption2, cOption3, cOption4, cAnswer, typeLO;
     public long questionCount;
 
-    DatabaseReference cReference;
+    DatabaseReference cDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,31 +47,46 @@ public class CreateQuiz extends AppCompatActivity {
 
     private void createQuiz() {
 
-        cReference = FirebaseDatabase.getInstance().getReference().child("Questions");
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //final DatabaseReference cReference = database.getReference("Questions");
+
+        cDatabase = FirebaseDatabase.getInstance().getReference("Questions");
 
         cPush.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String cQuestion = ((EditText) findViewById(R.id.cvQuestion)).getText().toString();
-                String cOption1 = ((EditText) findViewById(R.id.cvOption1)).getText().toString();
-                String cOption2 = ((EditText) findViewById(R.id.cvOption2)).getText().toString();
-                String cOption3 = ((EditText) findViewById(R.id.cvOption3)).getText().toString();
-                String cOption4 = ((EditText) findViewById(R.id.cvOption4)).getText().toString();
-                String cAnswer = ((EditText) findViewById(R.id.cvAnswer)).getText().toString();
-                String typeLO = ((EditText) findViewById(R.id.cvTypeLO)).getText().toString();
 
-                int intTypeLO = Integer.parseInt(typeLO);
+                String question = cQuestion.getText().toString();
+                String option1 = cOption1.getText().toString();
+                String option2 = cOption2.getText().toString();
+                String option3 = cOption3.getText().toString();
+                String option4 = cOption4.getText().toString();
+                String answer = cAnswer.getText().toString();
+                String LO = typeLO.getText().toString();
 
-                Map<Integer, Question> createQuiz = new HashMap<>();
-                createQuiz.put((int)questionCount+1, new Question(cQuestion, cOption1, cOption2, cOption3, cOption4, cAnswer,intTypeLO));
-                DatabaseReference newCRef = cReference.child("Question").push();
-                newCRef.setValue(createQuiz);
+                int intTypeLO = Integer.parseInt(LO);
+
+                int qCount = (int)(questionCount)+1;
+                String counter = Integer.toString(qCount);
+
+                Map<String, Question> createQuiz = new HashMap<>();
+
+                createQuiz.put(counter, new Question(question, option1, option2, option3, option4, answer,intTypeLO));
+
+                //createQuiz.put("Question number", counter)
+                //createQuiz.put(counter, new Question(question, option1, option2, option3, option4, answer,intTypeLO));
+
+                //DatabaseReference newCRef = cDatabase.child("Questions").push();
+                //newCRef.setValue(createQuiz);
+
+                cDatabase.push().setValue(createQuiz);
+
                 Toast.makeText(getApplicationContext(), "Question uploaded.", Toast.LENGTH_SHORT).show();
             }
 
     });
 
-        cReference.addValueEventListener(new ValueEventListener() {
+        cDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 questionCount = dataSnapshot.getChildrenCount();
