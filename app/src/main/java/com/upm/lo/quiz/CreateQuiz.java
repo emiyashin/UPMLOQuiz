@@ -64,7 +64,6 @@ public class CreateQuiz extends AppCompatActivity {
         cDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                questionCount = dataSnapshot.getChildrenCount();
 
                 int qCount = (int)(questionCount)+1;
                 final String counter = Integer.toString(qCount);
@@ -93,7 +92,7 @@ public class CreateQuiz extends AppCompatActivity {
 
                         int intTypeLO = Integer.parseInt(LO);
 
-                        Map<String, String> createQuiz = new HashMap<>();
+                        Map<String, Object> createQuiz = new HashMap<>();
 
                         createQuiz.put("question", question);
                         createQuiz.put("option1", option1);
@@ -101,7 +100,7 @@ public class CreateQuiz extends AppCompatActivity {
                         createQuiz.put("option3", option3);
                         createQuiz.put("option4", option4);
                         createQuiz.put("answer", answer);
-                        createQuiz.put("intLO", LO);
+                        createQuiz.put("intLO", intTypeLO);
                         //createQuiz.put("questionCount", counter);
 
                         cDatabase.child(counter).setValue(createQuiz);

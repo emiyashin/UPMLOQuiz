@@ -49,8 +49,9 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
+
         total++;
-        if (total>6) {
+        if (total>4) {
             //open the result activity
             total--;
             time.cancel();
@@ -73,7 +74,6 @@ public class QuizActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                    final Question question = dataSnapshot.getValue(Question.class);
-
 
                     t1_question.setText(question.getQuestion());
                     b1.setText(question.getOption1());
