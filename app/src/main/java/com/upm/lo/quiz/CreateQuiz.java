@@ -53,7 +53,7 @@ public class CreateQuiz extends AppCompatActivity {
         int qCount = (int)(questionCount)+1;
         String counter = Integer.toString(qCount);
 
-        cDatabase = FirebaseDatabase.getInstance().getReference("Questions");
+        cDatabase = FirebaseDatabase.getInstance().getReference("Questions/"+counter+"/");
 
         cPush.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +91,7 @@ public class CreateQuiz extends AppCompatActivity {
                 //DatabaseReference newCRef = cDatabase.child("Questions").push();
                 //newCRef.setValue(createQuiz);
 
-                cDatabase.push().setValue(createQuiz);
+                cDatabase.setValue(createQuiz);
 
                 Toast.makeText(getApplicationContext(), "Question uploaded.", Toast.LENGTH_SHORT).show();
             }
