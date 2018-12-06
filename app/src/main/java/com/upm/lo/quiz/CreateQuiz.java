@@ -14,7 +14,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.upm.lo.quiz.Model.Question;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +42,7 @@ public class CreateQuiz extends AppCompatActivity {
 
         cPush = (Button) findViewById(R.id.cButton);
 
-        testCounter = (TextView) findViewById(R.id.tQuestion);
+        //testCounter = (TextView) findViewById(R.id.tQuestion);
 
         createQuiz();
 
@@ -71,7 +70,7 @@ public class CreateQuiz extends AppCompatActivity {
 
                 int qCount = (int)(questionCount)+1;
                 final String counter = Integer.toString(qCount);
-                testCounter.setText(counter);
+                //testCounter.setText(counter);
 
 
                 cPush.setOnClickListener(new View.OnClickListener() {
