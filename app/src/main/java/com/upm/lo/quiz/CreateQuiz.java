@@ -50,6 +50,9 @@ public class CreateQuiz extends AppCompatActivity {
         //FirebaseDatabase database = FirebaseDatabase.getInstance();
         //final DatabaseReference cReference = database.getReference("Questions");
 
+        int qCount = (int)(questionCount)+1;
+        String counter = Integer.toString(qCount);
+
         cDatabase = FirebaseDatabase.getInstance().getReference("Questions");
 
         cPush.setOnClickListener(new View.OnClickListener() {
@@ -64,14 +67,23 @@ public class CreateQuiz extends AppCompatActivity {
                 String answer = cAnswer.getText().toString();
                 String LO = typeLO.getText().toString();
 
-                int intTypeLO = Integer.parseInt(LO);
+                //int intTypeLO = Integer.parseInt(LO);
 
                 int qCount = (int)(questionCount)+1;
                 String counter = Integer.toString(qCount);
 
-                Map<String, Question> createQuiz = new HashMap<>();
+                Map<String, String> createQuiz = new HashMap<>();
 
-                createQuiz.put(counter, new Question(question, option1, option2, option3, option4, answer,intTypeLO));
+                createQuiz.put("question", question);
+                createQuiz.put("option1", option1);
+                createQuiz.put("option2", option2);
+                createQuiz.put("option3", option3);
+                createQuiz.put("option4", option4);
+                createQuiz.put("answer", answer);
+                createQuiz.put("intLO", LO);
+                createQuiz.put("questionCount", counter);
+
+                //createQuiz.put(counter, new Question(question, option1, option2, option3, option4, answer,intTypeLO));
 
                 //createQuiz.put("Question number", counter)
                 //createQuiz.put(counter, new Question(question, option1, option2, option3, option4, answer,intTypeLO));
