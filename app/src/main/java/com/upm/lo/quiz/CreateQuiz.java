@@ -22,7 +22,7 @@ public class CreateQuiz extends AppCompatActivity {
 
     private Button cPush;
     private EditText cQuestion, cOption1, cOption2, cOption3, cOption4, cAnswer, typeLO;
-    private TextView testCounter;
+    //private TextView testCounter;
     public long questionCount;
 
     DatabaseReference cDatabase;
@@ -66,8 +66,6 @@ public class CreateQuiz extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 questionCount = dataSnapshot.getChildrenCount();
 
-                //int intTypeLO = Integer.parseInt(LO);
-
                 int qCount = (int)(questionCount)+1;
                 final String counter = Integer.toString(qCount);
                 //testCounter.setText(counter);
@@ -92,6 +90,8 @@ public class CreateQuiz extends AppCompatActivity {
                         String option4 = cOption4.getText().toString();
                         String answer = cAnswer.getText().toString();
                         String LO = typeLO.getText().toString();
+
+                        int intTypeLO = Integer.parseInt(LO);
 
                         Map<String, String> createQuiz = new HashMap<>();
 

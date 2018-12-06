@@ -79,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
         changePassword.setVisibility(View.GONE);
         sendEmail.setVisibility(View.GONE);
         remove.setVisibility(View.GONE);
+        btnChangeEmail.setVisibility(View.GONE);
+        btnChangePassword.setVisibility(View.GONE);
+        btnSendResetEmail.setVisibility(View.GONE);
+        btnRemoveUser.setVisibility(View.GONE);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
