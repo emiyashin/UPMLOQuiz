@@ -64,6 +64,7 @@ public class CreateQuiz extends AppCompatActivity {
         cDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                questionCount = dataSnapshot.getChildrenCount();
 
                 int qCount = (int)(questionCount)+1;
                 final String counter = Integer.toString(qCount);
