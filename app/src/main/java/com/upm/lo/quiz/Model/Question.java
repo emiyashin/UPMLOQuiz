@@ -2,7 +2,7 @@ package com.upm.lo.quiz.Model;
 
 public class Question {
 
-    public String question, option1, option2, option3, option4, answer;
+    public String question, option1, option2, option3, option4, answer, quizList;
     public int intLO;
     public static String [] LO;
 
@@ -12,7 +12,7 @@ public class Question {
         LO[1] = "Critical Thinking";
     }
 
-    public Question(String question, String option1, String option2, String option3, String option4, String answer, int intLO) {
+    public Question(String question, String option1, String option2, String option3, String option4, String answer, String quizList, int intLO) {
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
@@ -20,6 +20,7 @@ public class Question {
         this.option4 = option4;
         this.answer = answer;
         this.intLO = intLO;
+        this.quizList = quizList;
     }
 
     public Question() {
@@ -80,5 +81,13 @@ public class Question {
 
     public void setIntLO(int intLO) {
         this.intLO = intLO;
+    }
+
+    public String getQuizList() {
+        return quizList;
+    }
+
+    public void setQuizList(String quizList) {
+        this.quizList = quizList;
     }
 }

@@ -15,16 +15,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btnChangeEmail, btnChangePassword, btnSendResetEmail, btnRemoveUser,
-            changeEmail, changePassword, sendEmail, remove, signOut, btnQuiz, btnCreate;
+            changeEmail, changePassword, sendEmail, remove, signOut, btnQuiz, btnCreate, btnRemoveQuiz;
 
     private EditText oldEmail, newEmail, password, newPassword;
     private ProgressBar progressBar;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
+    private long questionNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        final DatabaseReference cDatabase;
 
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -65,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         signOut = (Button) findViewById(R.id.sign_out);
         btnQuiz = (Button) findViewById(R.id.quizActivity);
         btnCreate = (Button) findViewById(R.id.createActivity);
+        btnRemoveQuiz = (Button) findViewById(R.id.removeActivity);
 
         oldEmail = (EditText) findViewById(R.id.old_email);
         newEmail = (EditText) findViewById(R.id.new_email);
@@ -259,7 +268,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+        btnRemoveQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RemoveActivity.class));
+            }
+        });
+
+        //cDatabase = FirebaseDatabase.getInstance().getReference("Questions");
+
+        //cDatabase.addValueEventListener(new ValueEventListener() {
+          //  @Override
+            //public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              //  questionNo = dataSnapshot.getChildrenCount();
+
+                //int qNo = (int)(questionNo);
+                //final String qCounter = Integer.toString(qNo);
+
+                //btnRemoveQuiz.setOnClickListener(new View.OnClickListener() {
+                   // @Override
+                    //public void onClick(View v) {
+                      //  cDatabase.child(qCounter).removeValue();
+                        //Toast.makeText(getApplicationContext(), "Question "+qCounter+" deleted.", Toast.LENGTH_SHORT).show();
+                    }
+               //});
+            //}
+
+           // @Override
+            //public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            //}
+        //});
+
+    //}
 
     //sign out method
     public void signOut() {

@@ -26,8 +26,8 @@ public class QuizActivity extends AppCompatActivity {
     private int total = 0, correct = 0, wrong = 0;
     private int resultLO_total [] = new int[Question.LO.length];
     private int resultLO_correct [] = new int[Question.LO.length];
+    private String quizList;
     private CountDownTimer time;
-    public long questionCount;
 
     DatabaseReference reference;
 
