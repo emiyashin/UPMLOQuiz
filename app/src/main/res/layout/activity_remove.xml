@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RemoveActivity"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".RemoveActivity">
 
     <TextView
-        android:id="@+id/qTest"
+        android:id="@+id/questionRemoveTxt"
         android:layout_width="0dp"
-        android:layout_height="54dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="31dp"
-        android:text="Tx"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginRight="134dp"
+        android:layout_marginBottom="26dp"
+        android:text="@string/questionTv"
         app:layout_constraintBottom_toTopOf="@+id/removeQuiz"
         app:layout_constraintEnd_toStartOf="@+id/questionSpinner"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,13 +26,13 @@
         android:id="@+id/questionSpinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginRight="59dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/removeQuiz"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/qTest"
+        app:layout_constraintStart_toEndOf="@+id/questionRemoveTxt"
         app:layout_constraintTop_toTopOf="parent"></Spinner>
 
     <Button
@@ -41,12 +40,12 @@
         style="?android:textAppearanceSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="387dp"
+        android:layout_marginBottom="412dp"
         android:text="@string/btn_remove_quiz"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/questionRemoveTxt" />
 
 </android.support.constraint.ConstraintLayout>
