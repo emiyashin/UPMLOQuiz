@@ -4,33 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RemoveActivity">
+    tools:context=".RemoveActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/questionRemoveTxt"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="134dp"
-        android:layout_marginRight="134dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="37dp"
+        android:layout_marginBottom="7dp"
         android:text="@string/questionTv"
-        app:layout_constraintBottom_toTopOf="@+id/removeQuiz"
+        app:layout_constraintBottom_toBottomOf="@+id/questionSpinner"
         app:layout_constraintEnd_toStartOf="@+id/questionSpinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/questionSpinner" />
+
+    <TextView
+        android:id="@+id/questionMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="36dp"
+        android:text="Title"
+        app:layout_constraintBottom_toTopOf="@+id/qOption2"
+        app:layout_constraintEnd_toEndOf="@+id/qOption1"
+        app:layout_constraintStart_toStartOf="@+id/qOption1"
+        app:layout_constraintTop_toBottomOf="@+id/questionSpinner" />
+
+    <TextView
+        android:id="@+id/qOption1"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:text="Option1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/qOption2"
+        app:layout_constraintEnd_toStartOf="@+id/qOption2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/qOption2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginRight="121dp"
+        android:layout_marginBottom="14dp"
+        android:text="Option2"
+        app:layout_constraintBottom_toTopOf="@+id/qOption4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/qOption1"
+        app:layout_constraintTop_toBottomOf="@+id/questionMain" />
+
+    <TextView
+        android:id="@+id/qOption3"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:text="Option3"
+        app:layout_constraintBaseline_toBaselineOf="@+id/qOption4"
+        app:layout_constraintEnd_toStartOf="@+id/qOption4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/qOption4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginRight="121dp"
+        android:layout_marginBottom="42dp"
+        android:text="Option4"
+        app:layout_constraintBottom_toTopOf="@+id/removeQuiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/qOption3"
+        app:layout_constraintTop_toBottomOf="@+id/qOption2" />
 
     <Spinner
         android:id="@+id/questionSpinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/removeQuiz"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginRight="102dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/questionMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/questionRemoveTxt"
         app:layout_constraintTop_toTopOf="parent"></Spinner>
@@ -40,12 +104,12 @@
         style="?android:textAppearanceSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="412dp"
+        android:layout_marginBottom="219dp"
         android:text="@string/btn_remove_quiz"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionRemoveTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/qOption4" />
 
 </android.support.constraint.ConstraintLayout>
