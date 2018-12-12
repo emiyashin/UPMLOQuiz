@@ -3,10 +3,12 @@ package com.upm.lo.quiz;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,7 +35,7 @@ public class RemoveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_remove);
 
         final Spinner quizSpin = (Spinner) findViewById(R.id.questionSpinner);
-        Button removeBtn = (Button) findViewById(R.id.removeQuiz);
+        final Button removeBtn = (Button) findViewById(R.id.removeQuiz);
 
        final TextView tQuestion = (TextView) findViewById(R.id.questionRemoveTxt);
         final TextView tOption1 = (TextView) findViewById(R.id.qOption1);
@@ -46,13 +48,13 @@ public class RemoveActivity extends AppCompatActivity {
         cDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final Question question = dataSnapshot.getValue(Question.class);
+                //final Question question = dataSnapshot.getValue(Question.class);
 
-                tQuestion.setText(question.getQuestion());
-                tOption1.setText(question.getOption1());
-                tOption2.setText(question.getOption2());
-                tOption3.setText(question.getOption3());
-                tOption4.setText(question.getOption4());
+                //tQuestion.setText(question.getQuestion());
+                //tOption1.setText(question.getOption1());
+                //tOption2.setText(question.getOption2());
+                //tOption3.setText(question.getOption3());
+                //tOption4.setText(question.getOption4());
 
                 // Is better to use a List, because you don't know the size
                 // of the iterator returned by dataSnapshot.getChildren() to
@@ -66,6 +68,18 @@ public class RemoveActivity extends AppCompatActivity {
                 ArrayAdapter<String> questionAdapter = new ArrayAdapter<String>(RemoveActivity.this, android.R.layout.simple_spinner_item, questionsNo);
                 questionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 quizSpin.setAdapter(questionAdapter);
+
+                final String questionSel = String.valueOf(quizSpin.getSelectedItem());
+                tQuestion.setText(questionSel);
+
+                removeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        cDatabase.child(questionSel).removeValue();
+                        Toast.makeText(getApplicationContext(), "Question "+questionSel+" deleted.", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
             }
 
