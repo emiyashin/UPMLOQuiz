@@ -102,7 +102,7 @@ public class CreateQuiz extends AppCompatActivity {
                         createQuiz.put("option4", option4);
                         createQuiz.put("answer", answer);
                         createQuiz.put("intLO", intTypeLO);
-                        //createQuiz.put("questionCount", counter);
+                        createQuiz.put("questionCount", counter);
 
                         cDatabase.child(counter).setValue(createQuiz);
                         Toast.makeText(getApplicationContext(), "Question uploaded.", Toast.LENGTH_SHORT).show();
