@@ -33,4 +33,5 @@
     <string name="btn_quiz_activity">Start Quiz</string>
     <string name="btn_create_quiz">Create Quiz</string>
     <string name="btn_remove_quiz">Remove Quiz</string>
+    <string name="questionTv">Question</string>
 </resources>

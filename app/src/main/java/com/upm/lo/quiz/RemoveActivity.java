@@ -41,15 +41,15 @@ public class RemoveActivity extends AppCompatActivity {
                 // Is better to use a List, because you don't know the size
                 // of the iterator returned by dataSnapshot.getChildren() to
                 // initialize the array
-                final List<String> areas = new ArrayList<String>();
+                final List<String> questionsNo = new ArrayList<String>();
 
                 for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
-                    String areaName = areaSnapshot.child("areaName").getValue(String.class);
-                    areas.add(areaName);
+                    String areaName = areaSnapshot.child("questionCount").getValue(String.class);
+                    questionsNo.add(areaName);
                 }
-                ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(RemoveActivity.this, android.R.layout.simple_spinner_item, areas);
-                areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                quizSpin.setAdapter(areasAdapter);
+                ArrayAdapter<String> questionAdapter = new ArrayAdapter<String>(RemoveActivity.this, android.R.layout.simple_spinner_item, questionsNo);
+                questionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                quizSpin.setAdapter(questionAdapter);
 
             }
 
