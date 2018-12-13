@@ -23,10 +23,13 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button b1, b2, b3, b4;
     private TextView t1_question, timerTxt;
-    private int total = 0, correct = 0, wrong = 0;
+    private int total = 0, correct = 0, wrong = 0, qCount = 0;
     private int resultLO_total [] = new int[Question.LO.length];
     private int resultLO_correct [] = new int[Question.LO.length];
-    private String quizList;
+    //private String quizList;
+
+    //private long questionCount;
+
     private CountDownTimer time;
 
     DatabaseReference reference;
@@ -65,6 +68,7 @@ public class QuizActivity extends AppCompatActivity {
             //i.putExtra("correct lo", resultLO_correct);
 
             //startActivity(i);
+
         }
 
         else

@@ -24,7 +24,8 @@
         <activity android:name=".QuizActivity" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".CreateQuiz" />
-        <activity android:name=".RemoveActivity"></activity>
+        <activity android:name=".RemoveActivity" />
+        <activity android:name=".CreateSet"></activity>
     </application>
 
 </manifest>

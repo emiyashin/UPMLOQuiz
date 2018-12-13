@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateSet"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TextView
+        android:id="@+id/tQuiz"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:text="Create Quiz"
+        app:layout_constraintBottom_toTopOf="@+id/tQuizNo"
+        app:layout_constraintEnd_toEndOf="@+id/eButton"
+        app:layout_constraintStart_toStartOf="@+id/tQuizNo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tQuizNo"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="20dp"
+        android:text="Question No"
+        app:layout_constraintBottom_toTopOf="@+id/eQuestion1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tQuiz" />
+
+    <EditText
+        android:id="@+id/eQuestion1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/eQuestion2"
+        app:layout_constraintEnd_toEndOf="@+id/eQuestion2"
+        app:layout_constraintStart_toStartOf="@+id/tQuizNo"
+        app:layout_constraintTop_toBottomOf="@+id/tQuizNo" />
+
+    <EditText
+        android:id="@+id/eQuestion2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="19dp"
+        app:layout_constraintBottom_toTopOf="@+id/eQuestion3"
+        app:layout_constraintEnd_toEndOf="@+id/eQuestion3"
+        app:layout_constraintStart_toStartOf="@+id/eQuestion3"
+        app:layout_constraintTop_toBottomOf="@+id/eQuestion1" />
+
+    <EditText
+        android:id="@+id/eQuestion3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="39dp"
+        app:layout_constraintBottom_toTopOf="@+id/eButton"
+        app:layout_constraintEnd_toEndOf="@+id/eButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eQuestion2" />
+
+    <Button
+        android:id="@+id/eButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="196dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eQuestion3" />
+
+</android.support.constraint.ConstraintLayout>

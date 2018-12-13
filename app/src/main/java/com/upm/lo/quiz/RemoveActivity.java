@@ -1,11 +1,14 @@
 package com.upm.lo.quiz;
 
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,15 +22,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.upm.lo.quiz.Model.Question;
-
 public class RemoveActivity extends AppCompatActivity {
 
     private Spinner quizSpin;
     private Button removeBtn;
-    private TextView tQuestion, tOption1, tOption2, tOption3, tOption4;
+    private TextView test;
+    private String spinText;
 
     DatabaseReference cDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,50 +39,41 @@ public class RemoveActivity extends AppCompatActivity {
 
         final Spinner quizSpin = (Spinner) findViewById(R.id.questionSpinner);
         final Button removeBtn = (Button) findViewById(R.id.removeQuiz);
-
-       final TextView tQuestion = (TextView) findViewById(R.id.questionRemoveTxt);
-        final TextView tOption1 = (TextView) findViewById(R.id.qOption1);
-        final TextView tOption2 = (TextView) findViewById(R.id.qOption2);
-        final TextView tOption3 = (TextView) findViewById(R.id.qOption3);
-        final TextView tOption4 = (TextView) findViewById(R.id.qOption4);
+        final TextView test = (TextView) findViewById(R.id.qTest);
 
         cDatabase = FirebaseDatabase.getInstance().getReference("Questions");
 
         cDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //final Question question = dataSnapshot.getValue(Question.class);
-
-                //tQuestion.setText(question.getQuestion());
-                //tOption1.setText(question.getOption1());
-                //tOption2.setText(question.getOption2());
-                //tOption3.setText(question.getOption3());
-                //tOption4.setText(question.getOption4());
 
                 // Is better to use a List, because you don't know the size
                 // of the iterator returned by dataSnapshot.getChildren() to
                 // initialize the array
-                final List<String> questionsNo = new ArrayList<String>();
+                final List<String> questionList = new ArrayList<String>();
 
-                for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
-                    String areaName = areaSnapshot.child("questionCount").getValue(String.class);
-                    questionsNo.add(areaName);
+                for (DataSnapshot questionSnapshot: dataSnapshot.getChildren()) {
+                    String questions = questionSnapshot.child("questionCount").getValue(String.class);
+                    if (questions!=null){
+                        questionList.add(questions);
+                    }
                 }
-                ArrayAdapter<String> questionAdapter = new ArrayAdapter<String>(RemoveActivity.this, android.R.layout.simple_spinner_item, questionsNo);
+
+                ArrayAdapter<String> questionAdapter = new ArrayAdapter<String>(RemoveActivity.this, android.R.layout.simple_spinner_item, questionList);
                 questionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 quizSpin.setAdapter(questionAdapter);
-
-                final String questionSel = String.valueOf(quizSpin.getSelectedItem());
-                tQuestion.setText(questionSel);
 
                 removeBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        cDatabase.child(questionSel).removeValue();
-                        Toast.makeText(getApplicationContext(), "Question "+questionSel+" deleted.", Toast.LENGTH_SHORT).show();
-
+                        cDatabase.child(spinText).removeValue();
+                        Toast.makeText(getApplicationContext(), "Question "+spinText+" deleted.", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+                //quizSpin.setOnItemClickListener(onItemSelectedListener1);
+
+                //String spinText = quizSpin.getSelectedItem().toString();
 
             }
 
@@ -89,6 +83,23 @@ public class RemoveActivity extends AppCompatActivity {
             }
         });
 
+        quizSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                spinText = quizSpin.getSelectedItem().toString();
+                test.setText(spinText);
+            }
+                @Override
+                public void onNothingSelected(AdapterView<?> parent){
+
+        }
+
+
+
+    });
+
 
     }
+
+
 }

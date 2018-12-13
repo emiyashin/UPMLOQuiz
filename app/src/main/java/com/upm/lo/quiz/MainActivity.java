@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnChangeEmail, btnChangePassword, btnSendResetEmail, btnRemoveUser,
-            changeEmail, changePassword, sendEmail, remove, signOut, btnQuiz, btnCreate, btnRemoveQuiz;
+            changeEmail, changePassword, sendEmail, remove, signOut, btnQuiz, btnCreate, btnRemoveQuiz, btnCreateSet;
 
     private EditText oldEmail, newEmail, password, newPassword;
     private ProgressBar progressBar;
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         btnQuiz = (Button) findViewById(R.id.quizActivity);
         btnCreate = (Button) findViewById(R.id.createActivity);
         btnRemoveQuiz = (Button) findViewById(R.id.removeActivity);
+        btnCreateSet = (Button) findViewById(R.id.createSet);
 
         oldEmail = (EditText) findViewById(R.id.old_email);
         newEmail = (EditText) findViewById(R.id.new_email);
@@ -265,6 +266,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, CreateQuiz.class));
+            }
+        });
+
+        btnCreateSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CreateSet.class));
             }
         });
 
