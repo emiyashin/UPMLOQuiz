@@ -68,6 +68,7 @@ public class CreateSet extends AppCompatActivity {
                         createSet.put("0", questionSel1);
                         createSet.put("1", questionSel2);
                         createSet.put("2", questionSel3);
+                        createSet.put("quizCount", counter);
 
                         cDatabase.child(counter).child("questionList").setValue(createSet);
                         Toast.makeText(getApplicationContext(), "Quiz created.", Toast.LENGTH_SHORT).show();

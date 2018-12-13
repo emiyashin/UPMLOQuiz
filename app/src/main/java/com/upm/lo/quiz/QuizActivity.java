@@ -26,13 +26,13 @@ public class QuizActivity extends AppCompatActivity {
     private int total = 0, correct = 0, wrong = 0, qCount = 0;
     private int resultLO_total [] = new int[Question.LO.length];
     private int resultLO_correct [] = new int[Question.LO.length];
-    //private String quizList;
+    private String quizList;
 
     //private long questionCount;
 
     private CountDownTimer time;
 
-    DatabaseReference reference;
+    DatabaseReference reference, quizRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,18 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
+        quizRef = FirebaseDatabase.getInstance().getReference().child("Quiz").child(quizList);
+        quizRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         total++;
         if (total>4) {

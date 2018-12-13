@@ -34,7 +34,9 @@
         app:layout_constraintBottom_toTopOf="@+id/removeQuiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/qTest"
-        app:layout_constraintTop_toTopOf="parent"></Spinner>
+        app:layout_constraintTop_toTopOf="parent">
+
+    </Spinner>
 
     <Button
         android:id="@+id/removeQuiz"
