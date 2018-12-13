@@ -1,5 +1,6 @@
 package com.upm.lo.quiz;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -58,6 +59,16 @@ public class QuizMenu extends AppCompatActivity {
                 ArrayAdapter<String> selectAdapter = new ArrayAdapter<String>(QuizMenu.this, android.R.layout.simple_spinner_item, selectList);
                 selectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 startSpin.setAdapter(selectAdapter);
+
+                startBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent myIntent = new Intent(QuizMenu.this, QuizActivity.class);
+                        myIntent.putExtra("quizCount", String.valueOf(selText));
+                        startActivity(myIntent);
+
+                    }
+                });
 
             }
 
