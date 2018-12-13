@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.upm.lo.quiz.Model.Question;
+import com.upm.lo.quiz.Model.Quiz;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class QuizActivity extends AppCompatActivity {
     private int total = 0, correct = 0, wrong = 0, qCount = 0;
     private int resultLO_total [] = new int[Question.LO.length];
     private int resultLO_correct [] = new int[Question.LO.length];
-    private String quizCount, key;
+    private String quizCount, question1, question2, question3;
 
     //private long questionCount;
 
@@ -59,7 +60,11 @@ public class QuizActivity extends AppCompatActivity {
         quizRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                key = dataSnapshot.child("questionList").child("quizCount").getValue(String.class);
+                Quiz quiz = dataSnapshot.child("questionList").getValue(Quiz.class);
+                question1 = quiz.getQ1();
+                question2 = quiz.getQ2();
+                question3 = quiz.getQ3();
+
 
             }
 
@@ -95,7 +100,7 @@ public class QuizActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                    final Question question = dataSnapshot.getValue(Question.class);
 
-                    t1_question.setText(question.getQuestion());
+                    t1_question.setText(question3);
                     b1.setText(question.getOption1());
                     b2.setText(question.getOption2());
                     b3.setText(question.getOption3());

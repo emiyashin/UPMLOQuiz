@@ -65,9 +65,9 @@ public class CreateSet extends AppCompatActivity {
 
                         Map<String, Object> createSet = new HashMap<>();
 
-                        createSet.put("0", questionSel1);
-                        createSet.put("1", questionSel2);
-                        createSet.put("2", questionSel3);
+                        createSet.put("q1", questionSel1);
+                        createSet.put("q2", questionSel2);
+                        createSet.put("q3", questionSel3);
                         createSet.put("quizCount", counter);
 
                         cDatabase.child(counter).child("questionList").setValue(createSet);

@@ -2,7 +2,7 @@ package com.upm.lo.quiz.Model;
 
 public class Question {
 
-    public String question, option1, option2, option3, option4, answer, quizList;
+    public String question, option1, option2, option3, option4, answer;
     public int intLO;
     public static String [] LO;
 
@@ -20,7 +20,6 @@ public class Question {
         this.option4 = option4;
         this.answer = answer;
         this.intLO = intLO;
-        this.quizList = quizList;
     }
 
     public Question() {
@@ -81,13 +80,5 @@ public class Question {
 
     public void setIntLO(int intLO) {
         this.intLO = intLO;
-    }
-
-    public String getQuizList() {
-        return quizList;
-    }
-
-    public void setQuizList(String quizList) {
-        this.quizList = quizList;
     }
 }
