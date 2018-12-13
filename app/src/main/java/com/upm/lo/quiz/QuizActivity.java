@@ -26,7 +26,7 @@ public class QuizActivity extends AppCompatActivity {
     private int total = 0, correct = 0, wrong = 0, qCount = 0;
     private int resultLO_total [] = new int[Question.LO.length];
     private int resultLO_correct [] = new int[Question.LO.length];
-    private String quizCount;
+    private String quizCount, key;
 
     //private long questionCount;
 
@@ -55,10 +55,11 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
-        /*quizRef = FirebaseDatabase.getInstance().getReference().child("Quiz").child(quizList);
+        quizRef = FirebaseDatabase.getInstance().getReference().child("Quiz").child(quizCount);
         quizRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                key = dataSnapshot.child("questionList").child("quizCount").getValue(String.class);
 
             }
 
@@ -66,7 +67,7 @@ public class QuizActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
         total++;
         if (total>4) {
@@ -94,7 +95,7 @@ public class QuizActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                    final Question question = dataSnapshot.getValue(Question.class);
 
-                    t1_question.setText(question.getQuestion());
+                    t1_question.setText(key);
                     b1.setText(question.getOption1());
                     b2.setText(question.getOption2());
                     b3.setText(question.getOption3());
