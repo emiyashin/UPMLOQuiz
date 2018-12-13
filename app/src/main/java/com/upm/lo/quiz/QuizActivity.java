@@ -95,7 +95,7 @@ public class QuizActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                    final Question question = dataSnapshot.getValue(Question.class);
 
-                    t1_question.setText(key);
+                    t1_question.setText(question.getQuestion());
                     b1.setText(question.getOption1());
                     b2.setText(question.getOption2());
                     b3.setText(question.getOption3());
