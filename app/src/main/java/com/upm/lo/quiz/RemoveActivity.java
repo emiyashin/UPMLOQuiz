@@ -85,7 +85,7 @@ public class RemoveActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 spinText = quizSpin.getSelectedItem().toString();
-                test.setText(spinText);
+                //test.setText(spinText);
             }
                 @Override
                 public void onNothingSelected(AdapterView<?> parent){

@@ -5,16 +5,20 @@ public class Question {
     public String question, option1, option2, option3, option4, answer, questionCount;
     public int intLO;
     public static String [] LO;
-    public static String [] questionArray;
+    public static int [] questionArray;
 
     static {
         LO = new String[6];
-        LO[0] = "Comprehension";
-        LO[1] = "Critical Thinking";
+        LO[0] = "Knowledge";
+        LO[1] = "Comprehension";
+        LO[2] = "Application";
+        LO[3] = "Analysis";
+        LO[4] = "Synthesis";
+        LO[5] = "Evaluation";
     }
 
     static {
-        questionArray = new String[3];
+        questionArray = new int[3];
     }
 
     public Question(String question, String option1, String option2, String option3, String option4, String answer, String questionCount, int intLO) {

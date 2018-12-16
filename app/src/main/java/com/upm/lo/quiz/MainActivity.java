@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
         btnQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, QuizMenu.class));
+                startActivity(new Intent(MainActivity.this, QuizActivity.class));
             }
         });
 
@@ -333,5 +333,11 @@ public class MainActivity extends AppCompatActivity {
         if (authListener != null) {
             auth.removeAuthStateListener(authListener);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        int pid = android.os.Process.myPid();
+        android.os.Process.killProcess(pid);
     }
 }

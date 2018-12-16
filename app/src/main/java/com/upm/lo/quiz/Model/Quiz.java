@@ -2,48 +2,40 @@ package com.upm.lo.quiz.Model;
 
 public class Quiz {
 
-    public String q1, q2, q3, quizCount;
+    public int q1, q2, q3;
 
-    public Quiz(String q1, String q2, String q3, String quizCount) {
+    public Quiz(int q1, int q2, int q3) {
         this.q1 = q1;
         this.q2 = q2;
         this.q3 = q3;
-        this.quizCount = quizCount;
     }
 
     public Quiz() {
 
     }
 
-    public String getQ1() {
+    public int getQ1() {
         return q1;
     }
 
-    public void setQ1(String q1) {
+    public void setQ1(int q1) {
         this.q1 = q1;
     }
 
-    public String getQ2() {
+    public int getQ2() {
         return q2;
     }
 
-    public void setQ2(String q2) {
+    public void setQ2(int q2) {
         this.q2 = q2;
     }
 
-    public String getQ3() {
+    public int getQ3() {
         return q3;
     }
 
-    public void setQ3(String q3) {
+    public void setQ3(int q3) {
         this.q3 = q3;
     }
 
-    public String getQuizCount() {
-        return quizCount;
-    }
-
-    public void setQuizCount(String quizCount) {
-        this.quizCount = quizCount;
-    }
 }

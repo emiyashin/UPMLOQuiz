@@ -18,23 +18,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.upm.lo.quiz.Model.Question;
-import com.upm.lo.quiz.Model.Quiz;
 
 public class QuizActivity extends AppCompatActivity {
 
     private Button b1, b2, b3, b4;
     private TextView t1_question, timerTxt;
-    private int total = 0, correct = 0, wrong = 0, qCount = 0;
+    private int total = 0, correct = 0, wrong = 0;
     private int resultLO_total [] = new int[Question.LO.length];
     private int resultLO_correct [] = new int[Question.LO.length];
-    private String q1, q2, q3;
-    private int questions [] = new int[Question.questionArray.length];
-
-    //private long questionCount;
 
     private CountDownTimer time;
 
-    DatabaseReference reference, quizRef;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,20 +44,14 @@ public class QuizActivity extends AppCompatActivity {
         t1_question = (TextView) findViewById(R.id.questionTxt);
         timerTxt = (TextView) findViewById(R.id.timerTxt);
 
-        Intent i = getIntent();
-        q1 = i.getStringExtra("q1");
-
         updateQuestion();
         reverseTimer(15,timerTxt);
     }
 
     private void updateQuestion() {
 
-
-
-
         total++;
-        if (total>4) {
+        if (total>5) {
             //open the result activity
             total--;
             time.cancel();
@@ -87,7 +76,7 @@ public class QuizActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                    final Question question = dataSnapshot.getValue(Question.class);
 
-                    t1_question.setText(q1);
+                    t1_question.setText(question.getQuestion());
                     b1.setText(question.getOption1());
                     b2.setText(question.getOption2());
                     b3.setText(question.getOption3());

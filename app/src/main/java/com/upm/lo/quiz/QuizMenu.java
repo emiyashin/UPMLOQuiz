@@ -28,8 +28,9 @@ public class QuizMenu extends AppCompatActivity {
     private Spinner startSpin;
     private TextView tvSelect;
     private Button startBtn;
-    public String selText, q1, q2, q3;
-    private String selArray [] = new String [Question.questionArray.length];
+    private String selText;
+    private int q1, q2, q3;
+    private int selArray [] = new int [Question.questionArray.length];
 
     DatabaseReference cDatabase, quizRef;
 
@@ -91,24 +92,24 @@ public class QuizMenu extends AppCompatActivity {
                         q2 = quiz.getQ2();
                         q3 = quiz.getQ3();
 
-                        selArray[0] = q1;
-                        selArray[1] = q2;
-                        selArray[2] = q3;
+                        startBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                selArray[0] = q1;
+                                selArray[1] = q2;
+                                selArray[2] = q3;
+
+                                Intent myIntent = new Intent(QuizMenu.this, QuizActivity.class);
+                                myIntent.putExtra("selArray", selArray);
+                                startActivity(myIntent);
+
+                            }
+                        });
 
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-                startBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent myIntent = new Intent(QuizMenu.this, QuizActivity.class);
-                        myIntent.putExtra("selArray", selArray);
-                        startActivity(myIntent);
 
                     }
                 });
