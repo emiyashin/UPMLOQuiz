@@ -28,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     private int resultLO_total [] = new int[Question.LO.length];
     private int resultLO_correct [] = new int[Question.LO.length];
     private String q1, q2, q3;
+    private int questions [] = new int[Question.questionArray.length];
 
     //private long questionCount;
 
@@ -56,6 +57,8 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
+
+
 
 
         total++;

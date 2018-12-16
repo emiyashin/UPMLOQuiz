@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.upm.lo.quiz.Model.Question;
 import com.upm.lo.quiz.Model.Quiz;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class QuizMenu extends AppCompatActivity {
     private Spinner startSpin;
     private TextView tvSelect;
     private Button startBtn;
-    private String selText, q1, q2, q3;
+    public String selText, q1, q2, q3;
+    private String selArray [] = new String [Question.questionArray.length];
 
     DatabaseReference cDatabase, quizRef;
 
@@ -65,21 +67,6 @@ public class QuizMenu extends AppCompatActivity {
                 selectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 startSpin.setAdapter(selectAdapter);
 
-
-
-                startBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent myIntent = new Intent(QuizMenu.this, QuizActivity.class);
-                        myIntent.putExtra("quizCount", String.valueOf(selText));
-                        myIntent.putExtra("q1", String.valueOf(q1));
-                        myIntent.putExtra("q2", String.valueOf(q2));
-                        myIntent.putExtra("q3", String.valueOf(q3));
-                        startActivity(myIntent);
-
-                    }
-                });
-
             }
 
             @Override
@@ -93,7 +80,7 @@ public class QuizMenu extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selText = startSpin.getSelectedItem().toString();
-                tvSelect.setText(q1);
+                //tvSelect.setText(selText);
 
                 quizRef = FirebaseDatabase.getInstance().getReference().child("Quiz").child(selText);
                 quizRef.addValueEventListener(new ValueEventListener() {
@@ -104,6 +91,10 @@ public class QuizMenu extends AppCompatActivity {
                         q2 = quiz.getQ2();
                         q3 = quiz.getQ3();
 
+                        selArray[0] = q1;
+                        selArray[1] = q2;
+                        selArray[2] = q3;
+
                     }
 
                     @Override
@@ -112,15 +103,30 @@ public class QuizMenu extends AppCompatActivity {
                     }
                 });
 
+                startBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent myIntent = new Intent(QuizMenu.this, QuizActivity.class);
+                        myIntent.putExtra("selArray", selArray);
+                        startActivity(myIntent);
+
+                    }
+                });
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent){
+
+
 
             }
 
 
 
         });
+
+
+
 
     }
 }
